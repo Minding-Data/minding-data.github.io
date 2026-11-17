@@ -897,3 +897,18 @@ body.inner--slim .sulci-layer,body.inner--slim .bgv-layer{display:none !importan
 /* softer white for cards/text panels */
 :root{--card:#fcfaf6}
 .pub,.pubcard,.explore-list a,.textlinks a,.poster-full img{background:#fcfaf6}
+
+/* 2026-11-17 (t746u): tier-3 slim bar - facet mesh on the red (same banner-mesh.svg as 2nd tier), colour line drawn
+   as a rounded "tube" (cylinder shading, rounded ends), and the a600 curve ring back in the cream background. */
+.band.band--slim::before{display:block !important;content:"" !important;position:absolute;left:0;right:0;top:0;bottom:4px;z-index:0;pointer-events:none;opacity:.8;
+  background:url(../images/banner-mesh.svg) center top/1800px auto repeat-x}
+.band--slim .slimbar{position:relative;z-index:1}
+.band--slim{--pin:#b3685c;border-bottom-width:0 !important;padding-bottom:4px !important}
+.band--slim.band--pin-sage{--pin:#1a9e64}
+.band--slim.band--pin-slate{--pin:#9b4fe0}
+.band--slim.band--pin-mauve{--pin:#4a90ff}
+.band--slim,.band--slim.band--pin-sage,.band--slim.band--pin-slate,.band--slim.band--pin-mauve{box-shadow:inset 0 -4px 0 #fdfcfe !important}
+.band.band--slim::after{display:block !important;content:"" !important;position:absolute;left:6px;right:6px;top:100%;height:8px;border-radius:999px;pointer-events:none;
+  background:linear-gradient(180deg,color-mix(in srgb,var(--pin) 62%,#000) 0%,color-mix(in srgb,var(--pin) 55%,#fff) 28%,var(--pin) 55%,color-mix(in srgb,var(--pin) 60%,#000) 100%);
+  box-shadow:0 2px 4px -1px rgba(40,6,8,.35)}
+body.inner--slim .bgv-layer{display:block !important}
