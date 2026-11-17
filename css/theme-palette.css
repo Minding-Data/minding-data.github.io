@@ -863,3 +863,16 @@ body.poster-page{background:#f6f2ea !important;background-image:none !important}
 .area-sub{margin-top:1.6rem}
 .area-sub > h2{margin-bottom:.7rem}
 .area-sub .capstone{margin-top:1.1rem}
+
+/* 2026-11-17 (t727u): top nav (CV, Professional Profiles, logo) flush at the far top-right of the window
+   instead of aligned to the content column. --navpull = container gutter minus a 20px edge margin. */
+:root{--navpull:calc((100vw - min(1080px, 100vw - 3rem)) / 2 - 20px)}
+@media (max-width:380px){:root{--navpull:calc((100vw - min(1080px, 100vw - 2rem)) / 2 - 14px)}}
+.band .topbar .topnav,
+.band--home .topbar .topnav,
+.band--inner .topbar .topnav{margin-right:calc(-1 * var(--navpull)) !important}
+@media (min-width:641px){
+  .band--home .topbar .topnav.topnav--home{right:calc(-1 * var(--navpull)) !important;margin:0 !important}
+}
+.band--slim .slimbar{margin-right:auto !important}
+.band--slim .slimbar .slim-logo{margin-right:calc(-1 * var(--navpull))}
