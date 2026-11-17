@@ -837,3 +837,20 @@ body:is(.inner--sage,.inner--mauve,.inner--slate) .inner-title h1{color:#6a1416}
 
 /* 2026-11-17 (t697u, t698u): every page uses the landing-page background: js/bg-variants.js "a600" chord-arc ring
    (same as index.html), which hides the margin neurons (.bgv .sulci-layer). Curve-graph margins on Memory (t696u) reverted. */
+
+/* 2026-11-17 (t702u): poster thumbnails at the far right of poster listings, and full-page poster pages
+   (posters/*.html: tier-3 slim header, plain cream background, no background pattern). */
+.pub--thumb{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:1.1rem;align-items:start}
+.pub--thumb .pub-kind{grid-column:1}
+.pub--thumb .pub-apa{grid-column:1}
+.pub-thumb{grid-column:2;grid-row:1 / span 2;align-self:center;display:block;line-height:0;border-radius:6px;box-shadow:0 0 0 1px var(--line),0 6px 14px -10px rgba(60,24,26,.45);transition:transform var(--t) var(--ease)}
+.pub-thumb img{display:block;width:120px;height:auto;max-height:120px;object-fit:contain;border-radius:6px;background:#fff}
+.pub-thumb:hover{transform:translateY(-2px)}
+.pub-thumb:focus-visible{outline:2.5px solid var(--cc,#8c3d3e);outline-offset:3px}
+@media (max-width:640px){.pub--thumb{column-gap:.7rem}.pub-thumb img{width:72px;max-height:96px}}
+body.poster-page{background:#f6f2ea !important;background-image:none !important}
+.poster-full{margin:1.2rem 0 1rem;line-height:0}
+.poster-full a{display:block;line-height:0}
+.poster-full img{width:100%;height:auto;display:block;border-radius:8px;box-shadow:0 0 0 1px var(--line),0 14px 30px -22px rgba(60,24,26,.5);background:#fff}
+.poster-cite{margin:.2rem 0 .6rem}
+.poster-links{display:flex;flex-wrap:wrap;gap:.6rem 1.4rem;margin:.4rem 0 0}
