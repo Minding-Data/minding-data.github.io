@@ -23,7 +23,7 @@
   function hexRgb(h) { var m = /^#?([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})/i.exec(h.trim()); if (m) return [parseInt(m[1], 16), parseInt(m[2], 16), parseInt(m[3], 16)]; var n = (h.match(/\d+/g) || [236, 229, 216]).map(Number); return n.slice(0, 3); }
   function mix(a, b, t) { var A = hexRgb(a), B = hexRgb(b); return "rgb(" + [0, 1, 2].map(function (i) { return Math.round(A[i] + (B[i] - A[i]) * t); }).join(",") + ")"; }
   function draw() {
-    var band = document.querySelector(".band"), main = document.querySelector(".home-main"); if (!band || !main) return;
+    var band = document.querySelector(".band"), main = document.querySelector(".home-main") || document.querySelector("main"); if (!band || !main) return;   // 2026-11-17 (t697u/t698u): every page uses the landing-page ring
     var col = getComputedStyle(document.documentElement).getPropertyValue("--sulcus").trim() || "#ece5d8";
     var bR = band.getBoundingClientRect(), top0 = bR.bottom + scrollY;
     if (!cv) { cv = document.createElement("canvas"); cv.className = "bgv-layer"; cv.setAttribute("aria-hidden", "true"); document.body.insertBefore(cv, document.body.firstChild); }

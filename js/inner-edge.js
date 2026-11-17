@@ -19,7 +19,8 @@
   // facet side pale at the edge -> rose; size and opacity taper with distance from the edge like the logo.
   var RAMP_P = ["#640304", "#873939", "#9c5b5b", "#b3685c", "#d0b8b8"], RAMP_F = ["#f8eeeb", "#e6d2d0", "#d0b8b8", "#c3a5a5", "#b3685c"];
   function rampAt(R, t, rv) { var i = Math.floor(Math.max(0, Math.min(0.999, t)) * R.length + (rv - 0.5) * 1.2); return R[Math.max(0, Math.min(R.length - 1, i))]; }
-  var fam = (document.body.className.match(/inner--(sage|mauve|slate|maroon)/) || [0, "sage"])[1];
+  // 2026-11-17 (t699u): accent dots follow the area: dots--X override, then area--X (project/profile pages), then inner--X
+  var bc = document.body.className, fam = (bc.match(/\bdots--(sage|mauve|slate|maroon)\b/) || bc.match(/\barea--(sage|mauve|slate)\b/) || bc.match(/inner--(sage|mauve|slate|maroon)/) || [0, "sage"])[1];
 
   function mulberry32(a) { return function () { a |= 0; a = (a + 0x6D2B79F5) | 0; var t = Math.imul(a ^ (a >>> 15), 1 | a); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
   function pick(r, arr) { return arr[Math.floor(r() * arr.length) % arr.length]; }
