@@ -876,3 +876,8 @@ body.poster-page{background:#f6f2ea !important;background-image:none !important}
 }
 .band--slim .slimbar{margin-right:auto !important}
 .band--slim .slimbar .slim-logo{margin-right:calc(-1 * var(--navpull))}
+
+/* 2026-11-17 (t728u): role pills under the Flex-Ticket title + role lead */
+.role-pills{display:flex;flex-wrap:wrap;gap:.4rem;margin:.6rem 0 0}
+.role-pills .badge{margin:0}
+.role-lead{margin-top:0}
