@@ -856,3 +856,10 @@ body.poster-page{background:#f6f2ea !important;background-image:none !important}
 .poster-links{display:flex;flex-wrap:wrap;gap:.6rem 1.4rem;margin:.4rem 0 0}
 .poster-page .card.prose{max-width:none}
 .poster-page .poster-cite{max-width:68ch}
+
+/* 2026-11-17 (t710u/t711u): Adversity, Social, and Legal Psych page sub-sections + jump links */
+.sub-jump{display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;margin:0 0 1rem;font-size:.82rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.sub-jump a{color:var(--cc-ink);text-decoration:none;border-bottom:1.5px solid var(--cc)}
+.area-sub{margin-top:1.6rem}
+.area-sub > h2{margin-bottom:.7rem}
+.area-sub .capstone{margin-top:1.1rem}
