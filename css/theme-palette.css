@@ -854,3 +854,5 @@ body.poster-page{background:#f6f2ea !important;background-image:none !important}
 .poster-full img{width:100%;height:auto;display:block;border-radius:8px;box-shadow:0 0 0 1px var(--line),0 14px 30px -22px rgba(60,24,26,.5);background:#fff}
 .poster-cite{margin:.2rem 0 .6rem}
 .poster-links{display:flex;flex-wrap:wrap;gap:.6rem 1.4rem;margin:.4rem 0 0}
+.poster-page .card.prose{max-width:none}
+.poster-page .poster-cite{max-width:68ch}
