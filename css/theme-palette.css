@@ -912,3 +912,8 @@ body.inner--slim .sulci-layer,body.inner--slim .bgv-layer{display:none !importan
   background:linear-gradient(180deg,color-mix(in srgb,var(--pin) 62%,#000) 0%,color-mix(in srgb,var(--pin) 55%,#fff) 28%,var(--pin) 55%,color-mix(in srgb,var(--pin) 60%,#000) 100%);
   box-shadow:0 2px 4px -1px rgba(40,6,8,.35)}
 body.inner--slim .bgv-layer{display:block !important}
+
+/* 2026-11-17 (t750u): curve ring lighter by tier. Homepage keeps the script's .92;
+   tier 2 (area pages, profiles, other info) .55; tier 3 (slim-bar projects and posters) .32 */
+body.inner .bgv-layer{opacity:.55 !important}
+body.inner.inner--slim .bgv-layer{opacity:.32 !important}
