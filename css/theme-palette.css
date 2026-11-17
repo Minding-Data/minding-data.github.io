@@ -881,3 +881,19 @@ body.poster-page{background:#f6f2ea !important;background-image:none !important}
 .role-pills{display:flex;flex-wrap:wrap;gap:.4rem;margin:.6rem 0 0}
 .role-pills .badge{margin:0}
 .role-lead{margin-top:0}
+
+/* 2026-11-17 (t730u) */
+/* 2nd-tier header: band's solid red made tall enough for the 84px logo; nav group (CV, Profiles, logo) centred
+   vertically in the solid red (band height minus the --dz dot zone), still at the far right */
+.band--inner{--solid:108px}
+.band--inner .topbar{min-height:calc(var(--solid) + var(--dz));padding:0 !important;position:relative}
+.band--inner .topbar .topnav{position:absolute !important;top:calc(var(--solid) / 2) !important;right:calc(-1 * var(--navpull));transform:translateY(-50%);margin:0 !important}
+@media (max-width:640px){.band--inner{--solid:80px}}
+/* tier-3 pages (projects, posters): plain cream, no background art */
+body.inner--slim{background:#f6f2ea !important}
+body.inner--slim .sulci-layer,body.inner--slim .bgv-layer{display:none !important}
+/* tier-3 project pages: wider content card (Flex-Ticket, Cost of Forgetting) */
+.inner--slim .inner-main--slim > .card.prose{max-width:none}
+/* softer white for cards/text panels */
+:root{--card:#fcfaf6}
+.pub,.pubcard,.explore-list a,.textlinks a,.poster-full img{background:#fcfaf6}
