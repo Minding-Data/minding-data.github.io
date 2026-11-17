@@ -1,0 +1,814 @@
+/* Burgundy theme (copy of violet site, 2026-11-14). Palette from the Childhood Adversity thumbnail:
+   rose-terracotta #b3685c, rosy ramp #c3a5a5/#d0b8b8, burgundy #873939/#8c3d3e, deep #6a1416. Orange #f7c080 accent dot only.
+   Data-viz dots in js/ stay purple by design. */
+:root{
+  --violet:#b3685c; --lilac:#d0b8b8; --peri:#c3a5a5; --orange:#f7c080;
+  --violet-ink:#873939; --violet-deep:#6a1416; --violet-tint:#f8eeec; --lilac-tint:#f2e4e2;
+  --od-950:#2e1719; --od-900:#3e1d20; --od-800:#57262a; --od-700:#873939; --od-600:#8c3d3e; --od-500:#aa7979;
+  --sand-50:#f6f2ea; --sand-100:#ece5d8; --sand-200:#e2d9c9;
+  --sulcus:#ece5d8;   /* burgundy copy: warm cream (violet site uses #ecebf1); footer, neurons and every --sand-100 box follow */
+  --lilac-warm-line:var(--lilac);   /* round 12: footer top line + separators back to --lilac #d0b8b8 */
+  --neuron:color-mix(in srgb,var(--sulcus) 70%,#a89276);   /* neuron line art (version N) */
+  --sand-100:var(--sulcus);   /* round 11: the warm-cream boxes/cards now match the footer */   /* base sulcus stroke (js/dot-edge.js, js/inner-edge.js read it); also the footer + pill text */
+  --ink:#2b2022; --muted:#64525a;
+  --line:rgba(110,40,42,.15); --line-strong:rgba(110,40,42,.32);
+}
+body{background:var(--sand-50)}
+a{color:var(--violet-ink);text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:3px;text-decoration-color:currentColor}
+a:hover{color:var(--violet-deep);text-decoration-thickness:2.5px}
+:focus-visible{outline-color:var(--violet-ink)}
+.band{background:
+    radial-gradient(900px 420px at 8% -10%,rgba(195,120,110,.30),transparent 60%),
+    radial-gradient(700px 380px at 100% 100%,rgba(43,6,6,.32),transparent 62%),
+    linear-gradient(135deg,#8c3d3e 0%,#7a2a2c 50%,#6a1416 100%)}
+.band::after{background:linear-gradient(180deg,rgba(246,242,234,0) 0%,rgba(246,242,234,.18) 22%,rgba(246,242,234,.55) 55%,rgba(246,242,234,.88) 82%,var(--sand-50) 100%)}
+.band a{color:#fff}
+.draft-pill::before{background:var(--orange)}
+.eyebrow{color:var(--violet-ink)}
+
+/* Header affiliation links: org first (link), role last, centered */
+.affils .org{display:inline-block;color:#fff;font-weight:600;font-size:.95rem;line-height:1.35;padding:.2rem .5rem;border-radius:10px;
+  text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:4px;text-decoration-color:rgba(255,255,255,.7);
+  transition:background var(--t) var(--ease),color var(--t) var(--ease),text-decoration-color var(--t) var(--ease)}
+.affils .org:hover,.affils .org:focus-visible{background:var(--sand-50);color:var(--violet-deep);text-decoration-color:var(--violet-deep);text-decoration-thickness:2.5px}
+.affils .org:focus-visible{outline:2px solid #fff;outline-offset:2px}
+
+/* Three titled columns */
+.areas3{max-width:1000px;margin-inline:auto}
+.cols3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2.4rem 2rem;align-items:start}
+.col{display:flex;flex-direction:column;align-items:center}
+.col-h{margin:0 0 1.6rem;padding-bottom:.6rem;font-family:var(--serif);font-weight:600;font-size:1.3rem;line-height:1.2;color:var(--violet-deep);text-align:center;border-bottom:2px solid var(--lilac);min-width:70%}
+.col-items{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;align-items:center;gap:1.9rem;width:100%}
+.col-items > li{display:flex;justify-content:center;width:100%}
+.col-items .wordtile{width:min(100%,240px);min-height:110px}
+.also{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.6rem 1rem;margin:2.6rem 0 0}
+.also-k{font-size:.74rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.also .textlinks{margin:0}
+
+/* picture tiles */
+.tile-label{color:var(--violet-deep)}
+.tile-label::after{background:var(--violet);transform:scaleX(.35);opacity:.9}
+.tile:hover .tile-label,.tile:focus-visible .tile-label{color:var(--violet-ink)}
+.tile:hover .tile-label::after,.tile:focus-visible .tile-label::after{transform:scaleX(1)}
+.tile:hover .tile-media{box-shadow:0 0 0 2px var(--violet),0 22px 36px -18px rgba(90,30,32,.5)}
+.tile:hover .tile-media::after,.tile:focus-visible .tile-media::after{background:rgba(46,23,25,.10)}
+.tile:focus-visible .tile-media{box-shadow:0 0 0 3px var(--sand-50),0 0 0 5px var(--violet-ink)}
+
+/* word tiles */
+.wordtile{border-top:4px solid var(--violet);color:var(--violet-deep);text-decoration:none}
+.wt-title{color:var(--violet-deep);text-decoration:underline;text-decoration-color:currentColor;text-decoration-thickness:1.5px}
+.wt-arrow{color:var(--violet-ink)}
+.wordtile:hover,.wordtile:focus-visible{background:var(--violet-tint);color:var(--violet-deep)}
+.wordtile:hover .wt-title,.wordtile:focus-visible .wt-title{text-decoration-thickness:2.5px;text-decoration-color:currentColor}
+.wordtile:focus-visible{box-shadow:0 0 0 3px var(--sand-50),0 0 0 5px var(--violet-ink)}
+
+/* buttons */
+.btn{text-decoration:none}
+.btn-primary{background:var(--violet-ink);color:#fff}
+.btn-primary:hover{background:var(--violet-deep);color:#fff}
+.btn-ghost{color:var(--violet-ink);box-shadow:inset 0 0 0 1.5px rgba(135,57,57,.45)}
+.btn-ghost:hover{background:var(--violet-tint);color:var(--violet-deep)}
+
+/* chips, text links, explore */
+.linkchip{color:var(--violet-ink);background:var(--violet-tint);text-decoration:underline;text-decoration-thickness:1px}
+.linkchip:hover{background:var(--violet-ink);color:#fff}
+.textlinks a{color:var(--violet-ink);text-decoration:underline}
+.textlinks a:hover{background:var(--violet-tint)}
+.textlinks a[aria-current="page"]{box-shadow:inset 0 0 0 2px currentColor}
+.xgroups{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.2rem 1.6rem}
+.xgroup h3{margin:0 0 .5rem;font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--violet-deep)}
+.xgroup .textlinks{margin:0;flex-direction:column;align-items:flex-start;gap:.35rem}
+.xgroup .textlinks a{min-height:36px;padding:.3rem .75rem}
+
+/* sources */
+.jump{margin:0 0 1rem;text-align:right}
+.jump a{font-size:.9rem;font-weight:600}
+.sources h2{margin-top:0}
+.sources-list{margin:0;padding-left:1.1rem}
+.sources-list li{margin:.35rem 0}
+.sources-list a{font-weight:600}
+
+.attrib-k{color:var(--violet-ink)}
+.feature{border-left:4px solid var(--violet);text-decoration:none}
+.feature .kicker{color:var(--violet-ink)}
+.feature .ftitle{color:var(--violet-deep);text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:4px}
+.badge{color:var(--violet-ink);background:var(--violet-tint);box-shadow:inset 0 0 0 1px rgba(135,57,57,.3)}
+.facts dt{color:var(--violet-ink)}
+.year > h2{color:var(--violet-ink)}
+.profiles a{text-decoration:none}
+.profiles a:hover{background:var(--violet-tint)}
+.profiles .pname{color:var(--violet-ink);text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:3px}
+.mini{color:var(--od-900);text-decoration:none}
+.foot-links a{color:var(--violet-ink);text-decoration:underline;text-decoration-thickness:1px}
+.site-foot{border-top:3px solid var(--lilac)}
+
+@media (max-width:860px){
+  .cols3{grid-template-columns:1fr;gap:2.6rem}
+  .col-items{flex-direction:row;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:1.6rem 1.2rem}
+  .col-items > li{width:auto}
+  .col-items .wordtile{width:min(100%,260px)}
+  .xgroups{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:480px){
+  .xgroups{grid-template-columns:1fr}
+  .col-items .wordtile{width:100%}
+}
+@media (prefers-reduced-motion:reduce){
+  .tile:hover .tile-label::after,.tile:focus-visible .tile-label::after{transition:none}
+}
+/* footer about blurb */
+.foot-about{padding:1.6rem 0 0}
+.foot-blurb{margin:0 auto;max-width:62ch;text-align:center;font-size:.95rem;line-height:1.6;color:var(--ink,#33262a)}
+.status{display:inline-block;margin-left:.35rem;padding:0 .45rem;border-radius:999px;border:1px solid var(--lilac);font-size:.8em;color:var(--violet-ink)}
+
+/* --- 2026-11-10 area-page template, footer explore, publication grid --- */
+.page-lab{flex:0 1 18rem;text-align:right;min-width:11rem}
+.page-lab-name{display:block;font-weight:600;font-size:1.02rem;line-height:1.35;color:#fff}
+a.page-lab-name{color:#fff;text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:4px;text-decoration-color:rgba(255,255,255,.7)}
+a.page-lab-name:hover{text-decoration-color:#fff;text-decoration-thickness:2.5px}
+.page-lab-meta,.page-lab-mail{display:block;margin-top:.4rem;font-size:.88rem;line-height:1.4;color:rgba(255,255,255,.9)}
+.page-lab-mail{color:#fff}
+.area-blurb{margin-bottom:1.6rem;max-width:none}
+.in-progress{margin-top:1.25rem}
+.in-progress-k{display:block;margin-bottom:.4rem;font-size:.74rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--violet-ink)}
+.works{margin-top:.4rem}
+.works > h2{font-family:var(--serif);font-weight:600;font-size:1.4rem;color:var(--violet-deep);margin:0 0 1rem}
+.pubs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem}
+.pubcard{display:flex;flex-direction:column;gap:.45rem;padding:1.15rem 1.2rem;border-radius:16px;background:#fff;box-shadow:inset 0 0 0 1px var(--line);text-decoration:none;color:var(--ink);min-height:44px;transition:transform var(--t) var(--ease),box-shadow var(--t) var(--ease),background var(--t) var(--ease)}
+.pubcard:hover{background:var(--violet-tint);transform:translateY(-2px);box-shadow:inset 0 0 0 1px var(--line-strong);color:var(--ink)}
+.pub-kind{font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--violet-ink)}
+.pub-title{font-weight:600;color:var(--violet-deep);text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:3px;line-height:1.35}
+.pub-cite{font-size:.92rem;color:var(--muted);line-height:1.45}
+.coming-soon{margin:0;color:var(--muted);font-size:.95rem}
+.foot-explore{padding:1.6rem 0 .2rem}
+.foot-explore h2{margin:0 0 .85rem;font-size:.76rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--violet-ink)}
+.explore-list{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.5rem}
+.explore-list a{display:inline-flex;align-items:center;min-height:40px;padding:.4rem .9rem;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1px var(--line);font-size:.88rem;font-weight:600;color:var(--violet-ink);text-decoration:underline}
+.explore-list a:hover{background:var(--violet-tint)}
+.explore-list a[aria-current="page"]{box-shadow:inset 0 0 0 2px currentColor}
+.affils .org{text-wrap:balance}
+@media (max-width:720px){
+  .page-head{flex-direction:column;align-items:flex-start}
+  .page-lab{text-align:left;max-width:none;flex-basis:auto}
+  .pubs-grid{grid-template-columns:1fr}
+}
+
+/* --- 2026-11-12 area-page header: title, small lab line, large tile at far right --- */
+.page-head--tile{display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:1.6rem;padding:1.4rem 1.4rem 1.4rem 1.8rem}
+.page-head--tile .page-head-text{flex:1 1 auto;min-width:0}
+.page-head--tile .crumbs{margin:0 0 .35rem}
+.page-head--tile .page-lab{display:block;margin:.55rem 0 0;text-align:left;min-width:0;max-width:none;flex:none;font-size:.92rem;line-height:1.4}
+.page-head--tile .page-lab-name{display:inline;font-size:.92rem;font-weight:600}
+.page-head--tile .page-lab-meta{display:inline;margin:0;font-size:.88rem}
+.page-head--tile .page-lab-meta::before{content:" · ";color:rgba(255,255,255,.75)}
+.page-head--tile .page-lab-mailline{margin:.3rem 0 0;font-size:.85rem}
+.page-head--tile .page-lab-mail{display:inline;margin:0}
+.page-head--tile .sub{margin:.6rem 0 0}
+.page-tile{flex:none;align-self:flex-start;width:clamp(150px,22vw,230px);height:auto;aspect-ratio:1/1;border-radius:20px;object-fit:cover;background:#f6f2ea;box-shadow:0 0 0 4px rgba(255,255,255,.22),0 14px 28px -16px rgba(0,0,0,.5)}
+@media (max-width:720px){
+  .page-head--tile{flex-direction:row;align-items:flex-start;gap:1rem;padding:1.1rem 1rem 1.1rem 1.2rem}
+  .page-tile{width:clamp(92px,28vw,140px);border-radius:14px}
+}
+@media (max-width:420px){
+  .page-head--tile h1{font-size:1.65rem}
+  .page-tile{width:84px;border-radius:12px}
+}
+/* publication lists (APA) */
+.works{margin-top:1.6rem}
+.works-h3{margin:1.4rem 0 .6rem;font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--violet-ink)}
+.pub-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.7rem}
+.pub{padding:.9rem 1.1rem;border-radius:14px;background:#fff;box-shadow:inset 0 0 0 1px var(--line)}
+.pub .pub-kind{display:block;margin-bottom:.25rem}
+.pub-apa{margin:0;padding-left:1.6em;text-indent:-1.6em;line-height:1.55;font-size:.95rem;color:var(--ink);overflow-wrap:anywhere}
+.pub-apa strong{color:var(--violet-deep)}
+.capstone-sub{margin:-.6rem 0 .8rem;color:var(--muted);font-size:.92rem}
+.placeholder{margin:0 0 .8rem}
+.downloads{margin:1.6rem 0 0}
+.downloads h2{margin:0 0 .8rem;font-family:var(--serif);font-weight:600;font-size:1.25rem;color:var(--violet-deep)}
+.downloads .facts{margin:1rem 0 0}
+.snap-note{display:block;margin-top:.25rem;font-size:.85rem;color:var(--muted)}
+.profiles .pending{display:flex;flex-direction:column;gap:.2rem;padding:.9rem 1rem;border-radius:14px;box-shadow:inset 0 0 0 1px var(--line);border:1px dashed var(--line-strong)}
+.affils span.org{text-decoration:none;cursor:default}.affils span.org:hover{background:none;color:#fff}
+
+/* --- 2026-11-13 home redesign: open title, subtitle, dissolving data-matrix edge, colour-coded columns --- */
+:root{
+  /* Column accent families. Change ONLY the three base colours; every outline, rule, underline
+     and the dot-edge.js streams derive from them (the -dot / -alt shades are mixed automatically). */
+  --sage:#75b296;   /* sampled from the Memory tile */
+  --mauve:#a560db;  /* burgundy copy: middle-column accent swapped rose-mauve -> purple (was #a87c98) */
+  --slate:#8f8b94;  /* FemtoSci logo dot-grid grays */
+  --sage-dot:color-mix(in srgb,var(--sage) 72%,#fff);  --sage-alt:color-mix(in srgb,var(--sage) 84%,#000);
+  --mauve-dot:color-mix(in srgb,var(--mauve) 72%,#fff); --mauve-alt:color-mix(in srgb,var(--mauve) 62%,#fff);
+  --slate-dot:color-mix(in srgb,var(--slate) 35%,#fff); --slate-alt:color-mix(in srgb,var(--slate) 72%,#fff);
+}
+/* brand label (replaces the old draft pill on every page) */
+.brand-mark{display:inline-flex;align-items:center;gap:.5rem;font-size:.74rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#fff;text-decoration:none;white-space:nowrap}
+.brand-mark::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--orange);flex:none}
+a.brand-mark:hover{color:#fff;text-decoration:none;opacity:.85}
+.band a.brand-mark{text-decoration:none}
+
+/* home banner: solid edge, no fade; dots are drawn on .dot-edge by js/dot-edge.js */
+.band--home{--fade:0px}
+.band--home::after{display:none}
+.band--home .hero{padding:2.4rem 0 5.2rem}
+.band--home .hero-name{display:block;padding:0;background:none;border:0;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none}
+.band--home .hero-name h1{text-shadow:0 2px 18px rgba(40,8,10,.25)}
+.hero-sub{text-wrap:balance;margin:.75rem 0 0;font-size:clamp(.82rem,1.6vw,1rem);font-weight:500;letter-spacing:.06em;color:rgba(255,255,255,.88)}
+.hero-sub .dot{color:var(--lilac)}
+.hero-sub .dot{margin:0 .3em}
+.hero-sub .hs-rest{white-space:nowrap}
+@media (max-width:520px){.hero-sub .hs-brand{display:block;margin-bottom:.15rem}.hero-sub .hs-sep{display:none}}
+.band > .dot-edge{position:absolute;left:0;right:0;top:calc(100% - 64px);width:100%;height:290px;z-index:2;pointer-events:none;display:block}
+.band--home + .home-main{padding-top:190px}
+
+/* colour-coded columns */
+.col--sage{--cc:var(--sage)} .col--mauve{--cc:var(--mauve)} .col--slate{--cc:var(--slate)}
+@supports (grid-template-rows:subgrid){
+  .areas3 .cols3{grid-template-rows:auto auto 1fr;row-gap:0}
+  .areas3 .cols3 > .col{display:grid;grid-row:span 3;grid-template-rows:subgrid;justify-items:center;align-items:start}
+  .areas3 .cols3 > .col > .col-h{align-self:end}
+}
+.areas3 .col-h{border-bottom:2px solid var(--cc,var(--lilac));margin-bottom:.7rem;text-wrap:balance}
+.col-affil{margin:0 0 1.6rem;max-width:none;padding:0 .2rem;text-align:center;font-size:.86rem;line-height:1.45;color:var(--muted);text-wrap:balance}
+.col-affil .col-org{font-weight:600;color:var(--ink);text-decoration:none}
+.col-affil a.col-org{color:var(--violet-ink);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:var(--cc)}
+.col-affil a.col-org:hover{color:var(--violet-deep);text-decoration-thickness:2px}
+.areas3 .col .tile-media{box-shadow:0 0 0 1.5px var(--cc),0 10px 22px -16px rgba(60,24,26,.35)}
+.areas3 .col .tile:hover .tile-media{box-shadow:0 0 0 2px var(--cc),0 22px 36px -18px rgba(60,24,26,.45)}
+.areas3 .col .tile:focus-visible .tile-media{box-shadow:0 0 0 3px var(--sand-50),0 0 0 5px var(--violet-ink)}
+.areas3 .col .tile-media::after{box-shadow:none}
+.areas3 .col .tile-label::after{background:var(--cc)}
+.tile-sub{text-wrap:balance;max-width:20ch}
+@media (max-width:860px){
+  .areas3 .cols3{grid-template-rows:none;row-gap:2.6rem}
+  .areas3 .cols3 > .col{display:flex;grid-row:auto;align-items:center}
+  .areas3 .cols3 > .col > .col-h{align-self:center}
+  .band--home .hero{padding-bottom:3.6rem}
+  .band--home + .home-main{padding-top:150px}
+}
+@media print{.dot-edge{display:none}.band--home + .home-main{padding-top:1rem}}
+.col-affil .col-role{display:block}
+.col-affil .nw{white-space:nowrap}
+
+/* --- 2026-11-13b refinements: kicker above name, seamless dot dissolve, aligned rows, no label underlines --- */
+.topbar--home{justify-content:flex-end}
+.hero-kicker{margin:0 0 .55rem;font-size:.74rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.86)}
+.hero-sub .dot{margin:0 .35em;color:var(--lilac)}
+.band--home .hero{padding:2.2rem 0 8.5rem}
+/* when js/dot-edge.js runs, the CSS background stops --dz above the bottom and the canvas
+   paints the rest as overlapping band-coloured dots, so there is no straight seam */
+.band--home{--dz:44px}
+.band--home.has-dots{background-size:100% calc(100% - var(--dz));background-repeat:no-repeat}
+.band > .dot-edge{top:auto}
+.band--home + .home-main{padding-top:270px}
+
+/* charcoal column titles; colour only on the rule + thumbnail border */
+.areas3 .col-h{color:#33282a}
+/* shared rows across the three columns: header, affiliation, then one row per project */
+@supports (grid-template-rows:subgrid){
+  .areas3 .cols3{grid-template-rows:auto auto repeat(3,auto);row-gap:0}
+  .areas3 .cols3 > .col{display:grid;grid-row:span 5;grid-template-rows:subgrid;justify-items:center;align-items:start}
+  .areas3 .cols3 > .col > .col-items{grid-row:span 3;display:grid;grid-template-rows:subgrid;gap:0;row-gap:0;align-items:start}
+  .areas3 .cols3 > .col > .col-items > li{padding-bottom:1.9rem;align-items:flex-start}
+  .areas3 .col-affil{align-self:stretch;margin-bottom:1.6rem}
+}
+/* whole card is the link; no text underline or dash under labels */
+.areas3 .tile,.areas3 .tile:hover,.areas3 .tile:focus-visible{text-decoration:none}
+.areas3 .tile-label,.areas3 .tile-sub{text-decoration:none}
+.areas3 .tile-label::after,.areas3 .tile:hover .tile-label::after,.areas3 .tile:focus-visible .tile-label::after{display:none;content:none}
+.areas3 .tile-label{padding-bottom:0}
+.areas3 .tile-sub{margin-top:-.6rem}
+.also .textlinks a,.also .textlinks a:hover{text-decoration:none}
+@media (max-width:860px){
+  .areas3 .cols3{grid-template-rows:none;row-gap:2.6rem}
+  .areas3 .cols3 > .col{display:flex;grid-row:auto;align-items:center}
+  .areas3 .cols3 > .col > .col-items{display:flex;grid-row:auto;gap:1.6rem 1.2rem}
+  .areas3 .cols3 > .col > .col-items > li{padding-bottom:0}
+  .band--home{--dz:34px}
+  .band--home .hero{padding-bottom:6.5rem}
+  .band--home + .home-main{padding-top:190px}
+}
+@media print{.band--home .hero{padding-bottom:1rem}}
+@media (min-width:861px){.areas3 .tile-sub{max-width:none;white-space:nowrap}}
+.topbar--home .topnav{margin-left:auto;align-self:flex-end;justify-content:flex-end}
+
+/* --- 2026-11-13c: logo mark, eyebrow kicker, wider columns, pill link, centred footer --- */
+.visually-hidden{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.brand{gap:.7rem}
+.logo-mark{display:inline-flex;flex:none;border-radius:9px;line-height:0;text-decoration:none;box-shadow:0 0 0 1px rgba(255,255,255,.28),0 4px 12px -6px rgba(30,6,8,.5);transition:transform var(--t) var(--ease)}
+.logo-mark img{width:32px;height:32px;border-radius:9px}
+.logo-mark:hover{transform:translateY(-1px)}
+.band .logo-mark:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.topbar--home{justify-content:space-between}
+/* name block: kicker is left-aligned to the name and starts just left of the S */
+.name-lock{display:inline-block;text-align:left}
+.band--home .hero-kicker{margin:0 0 .35rem -.55rem;font-size:clamp(.86rem,1.5vw,1.02rem);font-weight:600;letter-spacing:.26em;color:rgba(255,255,255,.88)}
+/* affiliation lines: one style; links add the underline only */
+.col-affil .col-org{color:var(--violet-ink);font-weight:600}
+/* thumbnails: near-white card (matches the recoloured tile image backgrounds) */
+.areas3 .tile-media{background:#fdfbf7}
+/* wider gutters between the three columns */
+.areas3{max-width:1080px}
+.areas3 .cols3{column-gap:clamp(2rem,5vw,4.25rem)}
+/* "Creative and community" as a purple pill at the far right */
+.areas3 .also{justify-content:flex-end;margin:2.4rem 0 0}
+.pill-link{display:inline-flex;align-items:center;min-height:40px;padding:.45rem 1.15rem;border-radius:999px;background:var(--violet-ink);color:#fff;font-size:.9rem;font-weight:600;text-decoration:none;transition:background var(--t) var(--ease)}
+.pill-link:hover,.pill-link:focus-visible{background:var(--violet-deep);color:#fff;text-decoration:none}
+/* footer: links and copyright centred */
+.foot-inner{flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:.5rem}
+.foot-links{justify-content:center}
+@media (max-width:860px){
+  .areas3 .also{justify-content:center}
+}
+.band--home + .home-main{padding-top:225px}
+@media (max-width:860px){.band--home + .home-main{padding-top:190px}}
+.topbar--home{flex-direction:row!important;align-items:center!important}
+.topbar--home .topnav{align-self:center}
+
+/* --- 2026-11-13d footer: links centred, copyright far right --- */
+.foot-inner{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:.6rem 1.5rem;text-align:left}
+.foot-inner .foot-links{grid-column:2;justify-content:center}
+.foot-inner > p{grid-column:3;justify-self:end;text-align:right}
+@media (max-width:640px){
+  .foot-inner{grid-template-columns:1fr;justify-items:center;text-align:center}
+  .foot-inner .foot-links,.foot-inner > p{grid-column:1;justify-self:center;text-align:center}
+}
+
+/* --- 2026-11-13e: compact hero, white logo, crystalline mesh, sulci watermark, pill, colophon --- */
+body{background-color:#f6f2ea}
+/* faint embossed sulci along the margins (homepage) */
+body.home{background:#f6f2ea url(../images/sulci-left.svg) left -20px top 330px/300px auto no-repeat,url(../images/sulci-right.svg) right -20px top 330px/300px auto no-repeat}
+.home .home-main{position:relative}
+.home .home-main::before{content:"";position:absolute;left:-40px;right:-40px;top:140px;bottom:0;background:url(../images/sulci-center.svg) center top/1100px auto no-repeat;z-index:-1;pointer-events:none}
+
+/* slim top bar with crisp white brain-matrix logo */
+.band--home .topbar{padding:.65rem 0}
+.logo-mark{box-shadow:none;border-radius:0}
+.logo-mark img{width:36px;height:36px;border-radius:0}
+.brand .logo-mark img{width:34px;height:34px}
+
+/* compact hero (~22% shorter), centred kicker */
+.band--home .hero{padding:.6rem 0 5.6rem}
+.band--home .hero-name{text-align:center}
+.band--home .hero-kicker{margin:0 0 .45rem;padding-left:.34em;text-align:center;font-family:var(--sans);font-size:.76rem;font-weight:600;letter-spacing:.34em;text-transform:uppercase;color:rgba(255,255,255,.82)}
+.hero-sub .dot{margin:0 .6em}
+
+/* ultra-subtle crystalline mesh, eased away from the name */
+.band--home::before{content:"";position:absolute;left:0;right:0;top:0;bottom:var(--dz,44px);z-index:0;pointer-events:none;
+  background:url(../images/banner-mesh.svg) center top/1800px auto repeat-x;
+  -webkit-mask-image:radial-gradient(ellipse 34% 60% at 50% 42%,rgba(0,0,0,.35) 0%,#000 75%);mask-image:radial-gradient(ellipse 34% 60% at 50% 42%,rgba(0,0,0,.35) 0%,#000 75%)}
+
+/* headers on one line */
+@media (min-width:861px){.areas3 .col-h{white-space:nowrap}}
+
+/* Memory tile: matrix edge is the card outline (rounded ring in the CDL green) */
+.areas3 .col .tile-media--edge{box-shadow:0 10px 22px -16px rgba(60,24,26,.35)}
+.areas3 .col .tile-media--edge::after{box-shadow:inset 0 0 0 3px #00703c}
+.areas3 .col .tile:hover .tile-media--edge{box-shadow:0 22px 36px -18px rgba(60,24,26,.45)}
+
+/* Creative and community pill: outline + soft radial fill */
+.pill-link{background:radial-gradient(ellipse 75% 120% at 50% 50%,#f6f2ea 0%,#f6f2ea 40%,#f1e2e2 100%);color:#5a1517;box-shadow:inset 0 0 0 1.5px #834546}
+.pill-link:hover,.pill-link:focus-visible{background:radial-gradient(ellipse 75% 120% at 50% 50%,#f6f2ea 0%,#f7efef 35%,#e9d4d4 100%);color:#5a1517}
+
+/* footer colophon: small logo with copyright right-justified beneath it */
+.foot-inner > .colophon{grid-column:3;justify-self:end;display:flex;flex-direction:column;align-items:flex-end;gap:.3rem;text-align:right}
+.colophon p{margin:0}
+.colophon-mark{display:inline-flex;line-height:0;text-decoration:none}
+.colophon-mark img{width:30px;height:30px}
+@media (max-width:860px){
+  .band--home .hero{padding-bottom:4rem}
+  body.home{background-size:150px auto,150px auto}
+  .home .home-main::before{background-size:700px auto;top:100px}
+}
+@media (max-width:640px){
+  .foot-inner > .colophon{grid-column:1;justify-self:center;align-items:center;text-align:center}
+}
+
+/* --- 2026-11-13f (round 6): logo top-right, 2-line profiles, eyebrow restored, no footer logo, visible mesh, purple pill --- */
+/* top bar: CV | Professional / Profiles | logo, all on one centerline */
+.topbar,.topbar--home{align-items:center}
+.topnav{display:flex;align-items:center;gap:.9rem}
+.topbar--home .topnav{align-self:center}
+.topnav .nav-2line{display:inline-block;line-height:1.12;text-align:left}
+.topnav .logo-mark{display:inline-flex;align-items:center;margin-left:.1rem}
+.topnav .logo-mark img{width:36px;height:36px}
+/* eyebrow back to the round-4 position: larger, left of the name block, just past the S */
+.band--home .hero-kicker{margin:0 0 .35rem -.55rem;padding-left:0;text-align:left;font-size:clamp(.86rem,1.5vw,1.02rem);letter-spacing:.26em;color:rgba(255,255,255,.88)}
+/* no footer logo; copyright alone, right edge of column 3 */
+.colophon-mark{display:none}
+/* crystalline mesh: clearly visible, still eased off under the name */
+.band--home::before{-webkit-mask-image:radial-gradient(ellipse 30% 55% at 50% 42%,rgba(0,0,0,.45) 0%,#000 70%);mask-image:radial-gradient(ellipse 30% 55% at 50% 42%,rgba(0,0,0,.45) 0%,#000 70%)}
+/* Creative and community pill: header purple, small cream glow in the centre.
+   Text is white over the purple and deep violet over the cream (same geometry, clipped to the text). */
+.pill-link,.pill-link:hover,.pill-link:focus-visible{
+  background:radial-gradient(ellipse 40px 21px at 50% 50%,#f6f2ea 0%,#f6f2ea 42%,rgba(246,242,234,0) 72%),
+             linear-gradient(135deg,#8c3d3e 0%,#7a2a2c 50%,#6a1416 100%);
+  box-shadow:0 6px 16px -10px rgba(90,22,24,.6);color:#fff}
+.pill-link:hover,.pill-link:focus-visible{background:radial-gradient(ellipse 40px 21px at 50% 50%,#f6f2ea 0%,#f6f2ea 42%,rgba(246,242,234,0) 72%),linear-gradient(135deg,#7d3234 0%,#6f2426 50%,#621518 100%)}
+.pill-txt{display:inline-block;background:radial-gradient(ellipse 40px 21px at 50% 50%,#5a1517 0%,#5a1517 59.5%,#fff 60.5%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#fff}
+@supports not ((-webkit-background-clip:text) or (background-clip:text)){.pill-txt{-webkit-text-fill-color:#fff}}
+@media (max-width:640px){.topnav{gap:1rem}.topnav .logo-mark img{width:32px;height:32px}}
+.band--home .name-lock{display:inline-block;text-align:left}
+.band--home .name-lock h1{text-align:left}
+
+/* --- 2026-11-13g (round 7): cream pill text + glow, lower top-right group, optional left-offset header --- */
+/* pill: one text colour = footer cream (--sand-100); soft, small cream glow kept low so the cream text stays legible */
+.pill-link,.pill-link:hover,.pill-link:focus-visible{
+  background:radial-gradient(ellipse 46px 15px at 50% 50%,rgba(236,229,216,.3) 0%,rgba(236,229,216,.2) 45%,rgba(236,229,216,0) 100%),
+             linear-gradient(135deg,#8c3d3e 0%,#7a2a2c 50%,#6a1416 100%);color:var(--sand-100)}
+.pill-link:hover,.pill-link:focus-visible{background:radial-gradient(ellipse 46px 15px at 50% 50%,rgba(236,229,216,.3) 0%,rgba(236,229,216,.2) 45%,rgba(236,229,216,0) 100%),linear-gradient(135deg,#7d3234 0%,#6f2426 50%,#621518 100%)}
+.pill-txt{display:inline;background:none;-webkit-background-clip:border-box;background-clip:border-box;-webkit-text-fill-color:currentColor;color:var(--sand-100);text-shadow:0 1px 2px rgba(80,18,20,.55)}
+/* top-right group sits ~12px lower (all pages), still centred on each other */
+.topbar .topnav{position:relative;top:12px}
+/* B variant: name block shifted left (body.hero-offset or index-offset.html) */
+@media (min-width:861px){body.hero-offset .band--home .hero-name{transform:translateX(-80px)}}
+/* round 7: mauve nudged slightly pink, matching the dot stream */
+/* mobile: smaller drop so the nav does not crowd the eyebrow */
+@media (max-width:640px){.topbar .topnav{top:6px}}
+
+/* --- 2026-11-13h (round 8): sulci drawn by js/dot-edge.js on .sulci-layer (shared geometry with the dots) --- */
+.sulci-layer{position:absolute;left:0;width:100%;z-index:-1;pointer-events:none;display:block}
+body.home.sulci-js{background-image:none}
+.home.sulci-js .home-main::before{display:none}
+@media print{.sulci-layer{display:none}}
+
+/* --- 2026-11-13i (round 9): top-right group further right, thin sage Memory ring --- */
+/* top-right group: pushed toward the viewport edge (keeps >= 28px margin), never past the container on narrow screens */
+.topbar .topnav{margin-right:calc(-1 * clamp(0px, (100vw - 1080px) / 2 - 28px, 72px))}
+/* Memory (CDL) tile: thin sage ring like the other column outlines */
+.areas3 .col .tile-media--edge::after{box-shadow:inset 0 0 0 1.5px var(--sage)}
+
+/* --- 2026-11-13 inner-page template, column 1 (Neuroscience / sage). Sample: areas/cdl.html (Memory) --- */
+.inner--sage{--cc:var(--sage);--cc-ink:color-mix(in srgb,var(--sage) 58%,#0d1f17)}   /* ink shade keeps sage links readable */
+/* slim purple header, faint facet mesh, same top-right group as the homepage */
+.band--inner{--fade:0px;--dz:26px}
+.band--inner::after{display:none}
+.band--inner .topbar{padding:.65rem 0 2.6rem}
+.band--inner::before{content:"";position:absolute;left:0;right:0;top:0;bottom:var(--dz);z-index:0;pointer-events:none;opacity:.8;
+  background:url(../images/banner-mesh.svg) center top/1800px auto repeat-x}
+.band--inner.has-dots{background-size:100% calc(100% - var(--dz));background-repeat:no-repeat}
+.band--inner > .dot-edge{top:auto;height:120px}
+.band--inner + .inner-main{padding-top:72px}
+/* breadcrumb */
+.inner-crumbs ol{display:flex;flex-wrap:wrap;gap:.25rem .5rem;margin:0 0 1rem;padding:0;list-style:none;font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--cc-ink)}
+.inner-crumbs li+li::before{content:"\203A";margin-right:.5rem;color:var(--cc)}
+.inner-crumbs a{color:var(--cc-ink);text-decoration:none;border-bottom:1.5px solid var(--cc)}
+.inner-crumbs a:hover{border-bottom-width:2.5px}
+.inner-crumbs [aria-current]{color:#33282a}
+/* title with the page's own tile icon */
+.inner-title{display:flex;align-items:center;gap:1.1rem;margin:0 0 1.6rem;padding-bottom:1rem;border-bottom:2px solid var(--cc)}
+.inner-icon{flex:none;width:84px;height:84px;border-radius:16px;overflow:hidden;background:#fdfbf7;box-shadow:0 0 0 1.5px var(--cc),0 10px 22px -16px rgba(60,24,26,.35)}
+.inner-icon img{display:block;width:100%;height:100%;object-fit:cover}
+.inner-title h1{margin:0;font-family:var(--serif);font-size:clamp(2rem,4.4vw,2.8rem);line-height:1.1;color:#33282a}
+.inner-title .page-lab{display:block;margin:.4rem 0 0;text-align:left;min-width:0;max-width:none;flex:none;font-size:.95rem;color:#574a4d}
+.inner-title .page-lab-name{display:inline;font-size:.95rem;color:var(--cc-ink)}
+.inner-title a.page-lab-name{color:var(--cc-ink);text-decoration-color:var(--cc)}
+.inner-title .page-lab-meta{display:inline;margin:0;color:#574a4d}
+.inner-title .page-lab-meta::before{content:" · ";color:var(--cc)}
+/* sage thread in the content */
+.inner .page-main .prose a{color:var(--cc-ink);text-decoration-color:var(--cc)}
+.inner .page-main .prose a:hover{color:var(--cc-ink);text-decoration-thickness:2.5px}
+.inner .feature{border-left-color:var(--cc)}
+.inner .feature .kicker{color:var(--cc-ink)}
+.inner .feature .ftitle{color:#33282a;text-decoration-color:var(--cc)}
+.inner .card{box-shadow:0 0 0 1px color-mix(in srgb,var(--cc) 45%,transparent),0 18px 40px -30px rgba(60,24,26,.35)}
+.inner .in-progress-k{color:var(--cc-ink)}
+/* previous / next within the column */
+.inner-pager{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.8rem 0 .6rem}
+.inner-pager .pg{display:block;padding:.8rem 1rem;border-radius:12px;text-decoration:none;box-shadow:inset 0 0 0 1.5px var(--cc);background:rgba(255,255,255,.6)}
+.inner-pager .pg--next{text-align:right}
+.inner-pager .pg-k{display:block;font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--cc-ink)}
+.inner-pager .pg-t{display:block;font-family:var(--serif);font-size:1.15rem;font-weight:600;color:#33282a}
+.inner-pager .pg--prev .pg-t::before{content:"\2190  "; color:var(--cc)}
+.inner-pager .pg--next .pg-t::after{content:"  \2192"; color:var(--cc)}
+.inner-pager .pg:hover{box-shadow:inset 0 0 0 2.5px var(--cc)}
+.inner .sulci-layer{opacity:.6}
+@media (max-width:640px){
+  .band--inner .topbar{padding-bottom:1.8rem}
+  .band--inner > .dot-edge{height:90px}
+  .band--inner + .inner-main{padding-top:52px}
+  .inner-icon{width:64px;height:64px;border-radius:13px}
+  .inner-pager{grid-template-columns:1fr}
+  .inner-pager .pg--next{text-align:left}
+}
+.band--inner > .topbar{position:relative;z-index:3}
+.band--inner .topbar{padding-bottom:3.6rem}
+.inner .sulci-layer{opacity:.45}
+@media (max-width:640px){.band--inner .topbar{padding-bottom:2.8rem}}
+@media (max-width:640px){.inner-title .page-lab-meta{display:block;margin-top:.15rem}.inner-title .page-lab-meta::before{content:none}}
+
+/* --- 2026-11-13r: footer = sulcus colour (Sarah); pill text/glow follow the footer colour as before --- */
+.site-foot{background:var(--sulcus)}
+.pill-link,.pill-link:hover,.pill-link:focus-visible{color:var(--sulcus)}
+.pill-link,.pill-link:focus-visible{background:radial-gradient(ellipse 46px 15px at 50% 50%,rgba(236,229,216,.3) 0%,rgba(236,229,216,.2) 45%,rgba(236,229,216,0) 100%),linear-gradient(135deg,#8c3d3e 0%,#7a2a2c 50%,#6a1416 100%)}
+.pill-link:hover{background:radial-gradient(ellipse 46px 15px at 50% 50%,rgba(236,229,216,.3) 0%,rgba(236,229,216,.2) 45%,rgba(236,229,216,0) 100%),linear-gradient(135deg,#7d3234 0%,#6f2426 50%,#621518 100%)}
+.pill-txt{color:var(--sulcus)}
+
+/* --- 2026-11-13s (round 10): CV/Profiles top-left (logo stays right), more headroom, warm lilac items --- */
+/* round 13: name block back to the original position (.6rem top); the headroom goes to the footer bio instead */
+/* the added accent items in the warm lilac family */
+.site-foot{border-top-color:var(--lilac-warm-line)}
+.hero-sub .dot{color:var(--lilac-warm-line)}
+
+/* --- 2026-11-13t (round 11): top-right links restored; footer links move left; cream boxes = footer colour --- */
+a.feature:hover,.profiles a:hover{background:color-mix(in srgb,var(--sulcus) 88%,#996c65)}
+
+/* --- 2026-11-13u (round 12): footer bottom row out to the periphery (same edge inset as the header group) --- */
+@media (min-width:641px){
+  .site-foot .foot-inner{width:auto;margin-inline:calc(max(1.5rem,(100% - 1080px) / 2) - clamp(0px, (100vw - 1080px) / 2 - 28px, 72px))}
+  .foot-inner .foot-links{grid-column:1;justify-self:start;justify-content:flex-start;margin-left:-.6rem}
+}
+
+/* --- 2026-11-13v (round 13): bio headroom, pill fades lighter toward the centre --- */
+/* round 16: same footer height as before round 13; the bio just sits lower (space moved from below it, not added) */
+.foot-about{padding-top:2.6rem}   /* +16px above the bio (was 1.6rem) */
+.site-foot .foot-inner{padding-top:1rem;padding-bottom:1.3rem}   /* was 1.5rem / 1.8rem: -8px and -8px */
+.pill-link,.pill-link:focus-visible{background:radial-gradient(ellipse farthest-side at 50% 50%,#ebd9d9 0%,#e7d2d2 22%,#e2c7c8 42%,#dab9ba 60%,#d1abab 74%,#ca9fa0 85%,#b57c7d 93%,#7a2a2c 100%);color:#5a1517;box-shadow:inset 0 0 0 1.5px #7a2a2c}
+.pill-link:hover{background:radial-gradient(ellipse farthest-side at 50% 50%,#e7cfd0 0%,#e2c7c8 22%,#dbbcbc 42%,#d3adae 60%,#cba0a1 74%,#c49596 85%,#ad7273 93%,#6a1416 100%);color:#5a1517}
+.pill-txt{color:#5a1517;-webkit-text-fill-color:#5a1517;text-shadow:none}
+
+/* --- 2026-11-13z (round 17): pill shading follows the pill's own rounded outline (stacked inset
+   shadows, so every tone band is parallel to the edge), with a wider medium-tone zone --- */
+.pill-link,.pill-link:focus-visible{background:#f4e8e9;box-shadow:inset 0 0 0 1.5px #7a2a2c,inset 0 0 3px 2.5px #8d5051,inset 0 0 8px 4.5px rgba(160,100,101,.9),inset 0 0 14px 7px rgba(189,135,136,.66),inset 0 0 20px 11px rgba(203,156,156,.5),inset 0 0 26px 15px rgba(219,181,182,.3)}
+.pill-link:hover{background:#eddddd;box-shadow:inset 0 0 0 1.5px #6a1416,inset 0 0 3px 2.5px #85494a,inset 0 0 8px 4.5px rgba(151,91,92,.92),inset 0 0 14px 7px rgba(181,123,124,.68),inset 0 0 20px 11px rgba(197,146,147,.52),inset 0 0 26px 15px rgba(212,172,173,.34)}
+
+/* --- 2026-11-14 (round 18): no logo on the homepage header, footer only on the homepage,
+   footer bio wide and left-aligned at the left edge, copyright stays bottom right --- */
+@media (min-width:641px){
+  .site-foot .foot-about{width:auto;max-width:none;margin-inline:calc(max(1.5rem,(100% - 1080px) / 2) - clamp(0px, (100vw - 1080px) / 2 - 28px, 72px))}
+  .foot-blurb{margin:0;max-width:104ch;text-align:left}
+  .foot-inner .colophon{grid-column:3;justify-self:end}
+}
+/* keep the banner at 303.6px and the name where it was now that the 36px logo is gone */
+.band--home .hero{padding-top:calc(.6rem + 3.8px)}
+/* footer height unchanged (212px): the space freed by the removed links goes below the bio */
+.site-foot .foot-inner{padding-top:2rem;padding-bottom:2.52rem}
+/* homepage CV / Professional Profiles: further toward the right edge (48px inset on desktop) */
+@media (min-width:861px){
+  .band--home .topnav{margin-right:min(-0px, calc(48px - max(1.5rem, (100vw - 1080px) / 2)))}   /* container edge -> 48px from the window edge */
+}
+.foot-blurb{text-wrap:balance}   /* three even lines (~90 characters each) instead of a dangling last line */
+/* internal pages no longer have a footer: give the content a little room at the bottom */
+body.inner .inner-main{padding-bottom:4.5rem}
+
+/* --- 2026-11-14b (round 19): softer footer edge, cooler footer/neurons, neutral project boxes, bio centred --- */
+/* footer: no top rule; a 32px feather fades the page into the footer colour */
+.site-foot{border-top:0;position:relative}
+.site-foot::before{content:"";position:absolute;left:0;right:0;bottom:100%;height:32px;pointer-events:none;background:linear-gradient(to bottom,rgba(236,229,216,0),var(--sulcus))}
+/* neurons a touch lighter and less salient (same colour as the footer) */
+body.home .sulci-layer{opacity:.82}
+.inner .sulci-layer{opacity:.37}
+/* Memory page project boxes: no tint, just a smidge darker than the page; keep the coloured left bar */
+.inner a.feature{background:#efeae1;box-shadow:inset 0 0 0 1px #e6dfd3}
+.inner a.feature:hover{background:#ebe5da}
+/* pending-wording placeholder in the bio (mockups) */
+.bio-ph{background:#fff3c4;color:#5a4a00;padding:0 .25em;border-radius:3px;font-style:italic}
+/* bio option B (default): centred, narrower block */
+@media (min-width:641px){
+  .site-foot .foot-about{margin-inline:auto;width:min(1080px,100% - 3rem)}
+  .foot-blurb{margin:0 auto;max-width:66ch;text-align:center;text-wrap:balance}
+}
+
+/* --- 2026-11-14c (round 20): bio wide + left-aligned (option A) with the violet logo at left and a
+   larger "Minding Data" wordmark lead; shorter footer (soft fade and bottom-right copyright kept) --- */
+.site-foot .foot-about{display:flex;align-items:center;gap:1.1rem;padding-top:2.2rem}
+.foot-logo{flex:none;width:44px;height:44px}
+.foot-wordmark{font-family:var(--serif);font-size:1.32em;font-weight:600;color:var(--violet-ink);letter-spacing:.01em;margin-right:.1em}
+@media (min-width:641px){
+  .site-foot .foot-about{width:auto;max-width:none;margin-inline:calc(max(1.5rem,(100% - 1080px) / 2) - clamp(0px, (100vw - 1080px) / 2 - 28px, 72px))}
+  .foot-blurb{margin:0;max-width:112ch;text-align:left;text-wrap:pretty}
+}
+.site-foot .foot-inner{padding-top:.6rem;padding-bottom:1.4rem}
+@media (max-width:640px){.site-foot .foot-about{align-items:flex-start}.foot-logo{width:36px;height:36px;margin-top:.2rem}}
+
+/* --- 2026-11-14c (burgundy copy): every outline, rule, underline and ring in one burgundy.
+   --mauve/--sage/--slate now only colour the data dots (js reads them directly); lines use --outline. --- */
+:root{--outline:#8c3d3e}
+.col--sage,.col--mauve,.col--slate{--cc:var(--outline)}
+.inner--sage{--cc:var(--outline);--cc-ink:var(--violet-ink)}
+.col-h,.areas3 .col-h{border-bottom-color:var(--outline)}
+.areas3 .col .tile-media--edge::after{box-shadow:inset 0 0 0 1.5px var(--outline)}
+.status{border-color:var(--outline)}
+
+/* --- 2026-11-14e: category dot colours (dot-only vars; all lines use --outline) ---
+   left (Neuroscience) sage toned down; middle (DataViz & Applied Psych) mustard, to match the
+   Childhood Adversity tile's original gold frame; right (Materials) purple, a little darker than the old middle violet #a560db. */
+:root{
+  --sage:#6f9c86;  --sage-dot:#8fb4a2;  --sage-alt:#5b8572;
+  --mauve:#c99a35; --mauve-dot:#dcb862; --mauve-alt:#b0832a;
+  --slate:#7e4bb0; --slate-dot:#9874c2; --slate-alt:#683c95;
+}
+/* 2026-11-14f: Childhood Adversity outline back to thin burgundy; the poster's mustard #eec35b frame is now inside the tile image (images/tiles/plain/trauma.png) */
+
+/* --- 2026-11-14g: Sarah's pick - colour-code by column header + tile outlines (homepage only; Memory/inner pages unchanged).
+   Same-colour rule: header text, header rule, lab-link underline, tile outline, tile-label underline share the column colour.
+   Data dots are all burgundy (js/dot-edge.js CODE_HEADERS default). --- */
+:root{--tile-ow:2.25px}
+.areas3 .col--sage{--cc:#6f9c86;--hc:#4a7562}
+.areas3 .col--mauve{--cc:#c99a35;--hc:#8a6516}
+.areas3 .col--slate{--cc:#7e4bb0;--hc:#7e4bb0}
+.areas3 .col-h{color:var(--hc);border-bottom:2.5px solid var(--cc)}
+.areas3 .col .tile-media{box-shadow:0 0 0 var(--tile-ow) var(--cc),0 10px 22px -16px rgba(60,24,26,.35)}
+.areas3 .col .tile:hover .tile-media{box-shadow:0 0 0 calc(var(--tile-ow) + .75px) var(--cc),0 22px 36px -18px rgba(60,24,26,.45)}
+.areas3 .col .tile-media--edge::after{box-shadow:inset 0 0 0 var(--tile-ow) var(--cc)}
+
+/* --- 2026-11-14h: type scale tidy (body stays 16.5px) + colour-coded lab underlines + 3px tile outlines --- */
+:root{--tile-ow:3px}
+.col-affil{font-size:.94rem}                                   /* lab links + roles 13.8 -> 15px */
+.foot-blurb{font-size:1rem}                                    /* footer bio 15.2 -> 16px */
+.topnav a{font-size:.94rem}                                    /* nav 14.4 -> 15px */
+.pill-link{font-size:.94rem}                                   /* pill 14.4 -> 15px */
+.hero-sub{font-size:clamp(.875rem,1.6vw,1rem)}                 /* subtitle min 13.1 -> 14px on mobile */
+.feature .kicker,.in-progress-k,.inner-pager .pg-k{font-size:.78rem}   /* small-caps labels 11.5-11.8 -> 12.5px (= breadcrumbs) */
+.inner-title h1{font-size:clamp(2rem,4.4vw,2.75rem)}           /* inner h1s unify at 44px */
+.page-head--tile .page-lab-name,.inner-title .page-lab-name{font-size:.95rem}   /* lab names unify at 15.2px */
+/* lab underlines in the column colour (same lighter colours as the outlines); ISWYM is not a link, so it gets the same rule as a border */
+.areas3 .col-affil a.col-org{text-decoration-color:var(--cc);text-decoration-thickness:1.5px}
+.areas3 .col-affil span.col-org{text-decoration:underline;text-decoration-color:var(--cc);text-decoration-thickness:1.5px;text-underline-offset:3px;color:var(--violet-ink)}
+
+/* 2026-11-14k/l: banner type option B; kicker keeps its .26em tracking and is left-aligned (optically) to the N of the subtitle by js/kicker-align.js (kicker-fit.js justify retired, file kept) */
+.band--home .hero-kicker{font-size:clamp(16.5px,1.67vw,24px);letter-spacing:.26em;margin-left:0;width:0;overflow:visible;white-space:nowrap}
+.band--home .hero-sub{font-size:clamp(14px,1.28vw,18.5px)}
+
+/* 2026-11-14m: hero block left-aligned (kicker, name, subtitle share one optical left edge via js/kicker-align.js);
+   kicker 2px smaller (24 -> 22 at 1440) with wider tracking; v18 logo artwork swapped into existing icon spots only */
+.band--home .hero-name{text-align:left;max-width:100%}
+.band--home .name-lock{display:block}
+.band--home .hero-sub{text-align:left}
+.band--home .hero-kicker{font-size:clamp(15.1px,1.53vw,22px);letter-spacing:.32em;width:auto}
+.topnav .logo-mark img,.logo-mark img{border-radius:0;box-shadow:none}
+/* 2026-11-14m (t517u): all tile outlines match Memory's apparent outline. Memory showed 3px outer ring + 3px inset ring
+   = 6px solid sage; now every tile gets one solid 6px ring in its column color, and the inset ring is dropped. */
+:root{--tile-ow:6px}
+.areas3 .col .tile-media--edge::after{box-shadow:none}
+
+/* 2026-11-14n (t520u): thinner tile outlines; larger header logo; every inner page on the Memory template,
+   accents (crumbs, title rule, icon ring, left bars, pager) in its homepage column colour; dots via inner-edge.js */
+:root{--tile-ow:4px}
+.inner--sage{--cc:#6f9c86;--cc-ink:#4a7562}
+.inner--mauve{--cc:#c99a35;--cc-ink:#8a6516}
+.inner--slate{--cc:#7e4bb0;--cc-ink:#7e4bb0}
+.topnav .logo-mark img{width:54px;height:54px;filter:drop-shadow(0 0 5px rgba(255,240,236,.28))}
+@media (max-width:640px){.topnav .logo-mark img{width:46px;height:46px}}
+.inner-title .sub{margin:.35rem 0 0;font-size:.95rem;color:#574a4d}
+.inner-title .page-lab-mailline{margin:.25rem 0 0;font-size:.85rem}
+.inner-title .page-lab-mail{color:var(--cc-ink);text-decoration-color:var(--cc)}
+.inner-pager .pg--empty{box-shadow:none;background:none}
+.band--inner .topbar{padding-bottom:calc(3.6rem - 18px)}   /* keep band height: logo grew 36 -> 54px */
+@media (max-width:640px){.band--inner .topbar{padding-bottom:calc(2.8rem - 14px)}}
+
+/* 2026-11-14n (t522u): logo medium-big - inner page header corner, and at the bottom-right of the homepage banner */
+.topnav .logo-mark img{width:84px;height:84px}
+.band--inner .topbar{padding-bottom:max(.6rem,calc(3.6rem - 48px))}
+@media (max-width:640px){.topnav .logo-mark img{width:60px;height:60px}.band--inner .topbar{padding-bottom:max(.5rem,calc(2.8rem - 24px))}}
+.band--home .hero{position:relative}
+.hero-logo{position:absolute;right:0;bottom:1.1rem;z-index:3;line-height:0;text-decoration:none;transition:transform var(--t) var(--ease)}
+.hero-logo img{width:88px;height:88px;filter:drop-shadow(0 0 6px rgba(255,240,236,.28))}
+.hero-logo:hover{transform:translateY(-1px)}
+.hero-logo:focus-visible{outline:2px solid #fff;outline-offset:4px}
+@media (max-width:640px){.hero-logo{bottom:.4rem}.hero-logo img{width:56px;height:56px}}
+.band--home .hero{z-index:3}   /* keep the banner logo above the dot-edge canvas (z 2) */
+
+/* 2026-11-14o (t524u): logo top-right everywhere; slim maroon bar on second-level pages + Professional Profiles;
+   all-maroon pages (no column colour); only the first line of a lab name is underlined */
+:root{--maroon:#8c3d3e;--maroon-dot:#b3685c;--maroon-alt:#6e2a2b}
+.inner--maroon{--cc:#8c3d3e;--cc-ink:#873939}
+/* homepage: CV, Profiles, larger logo in the top-right corner (logo overhangs so the hero does not move) */
+.topnav .logo-mark--home img{width:116px;height:116px}
+.topnav .logo-mark--home{margin:-14px 0 -66px}
+.hero-logo{display:none}
+@media (max-width:640px){.topnav .logo-mark--home img{width:72px;height:72px}.topnav .logo-mark--home{margin:-6px 0 -30px}}
+/* homepage + subject pages: cluster higher and further right (toward the corner) */
+.band--home .topbar,.band--inner .topbar{padding-top:.25rem}
+@media (min-width:1100px){.band--home .topbar .topnav,.band--inner .topbar .topnav{margin-right:calc(-1 * clamp(0px,(100vw - 1080px) / 2 - 40px,100px))}}
+.band--inner .topbar{padding-bottom:max(.4rem,calc(3.6rem - 56px))}
+/* footer logo bottom-left by the bio, as large as the homepage header logo */
+.site-foot .foot-logo{width:116px;height:116px}
+@media (max-width:640px){.site-foot .foot-logo{width:72px;height:72px}}
+/* slim maroon bar: just tall enough for the logo, no facets, no dots, no nav */
+.band--slim{background:#7a2e30 !important;background-image:none !important;min-height:0;padding:0;position:relative}
+.band--slim::before,.band--slim::after{display:none !important;content:none !important}
+.band--slim .slimbar{display:flex;justify-content:flex-end;align-items:center;padding:6px 0}
+@media (min-width:1100px){.band--slim .slimbar{margin-right:calc(max(1.5rem,(100% - 1080px) / 2) - clamp(0px,(100vw - 1080px) / 2 - 40px,100px))}}
+.band--slim .slim-logo img{width:64px;height:64px;filter:none}
+@media (max-width:640px){.band--slim .slim-logo img{width:52px;height:52px}}
+.inner--slim .inner-main--slim{padding-top:2.2rem}
+.inner--slim .sulci-layer{display:none}
+/* lab names: underline only the first line (e.g. Contextual Dynamics Lab), not the institution */
+.areas3 .col-affil a.col-org,.areas3 .col-affil span.col-org{text-decoration:none}
+.areas3 .col-affil .col-org .nw:first-child,.areas3 .col-affil a.col-org:not(:has(.nw)){text-decoration:underline;text-decoration-color:var(--cc);text-decoration-thickness:1.5px;text-underline-offset:3px}
+
+/* 2026-11-14p (t525u) */
+/* homepage: logo further right, CV and Professional Profiles stacked under it, right-aligned (desktop/tablet) */
+@media (min-width:641px){
+  .band--home .topbar{position:relative;min-height:var(--home-topbar-h,64px)}
+  .band--home .topbar .topnav.topnav--home{position:absolute;top:10px;right:calc(-1 * clamp(0px,(100vw - 1080px) / 2 - 24px,150px));margin:0 !important;display:flex;flex-direction:column;align-items:flex-end;gap:.15rem;text-align:right}
+  .band--home .topbar .topnav--home .logo-mark--home{order:-1;margin:0 0 .35rem}
+  .band--home .topbar .topnav--home .nav-2line br{display:none}
+  .band--home .topbar .topnav--home a{line-height:1.25;padding:.15rem 0;min-height:0}
+  .band--home .topbar .topnav--home .logo-mark--home{margin:0 -6px .2rem 0}
+}
+/* second-level pages: maroon bar with a pinstripe of the parent area colour */
+.band--slim{border-bottom:4px solid transparent;background-clip:padding-box}
+.band--pin-sage{border-bottom-color:#6f9c86}
+.band--pin-mauve{border-bottom-color:#c99a35}
+.band--pin-slate{border-bottom-color:#7e4bb0}
+.band--pin-none{border-bottom-color:#b3685c}   /* Professional Profiles: no area, rose pinstripe from the burgundy ramp */
+/* area words in the area colour: subject pages (column) and click-throughs (parent area) */
+.inner--sage,.area--sage{--area:#4a7562}
+.inner--mauve,.area--mauve{--area:#8a6516}
+.inner--slate,.area--slate{--area:#7e4bb0}
+body:is(.inner--sage,.inner--mauve,.inner--slate,.area--sage,.area--mauve,.area--slate) .inner-crumbs li:not(:first-child) a{color:var(--area);border-bottom-color:var(--area)}
+body:is(.inner--sage,.inner--mauve,.inner--slate) .inner-crumbs [aria-current]{color:var(--area)}
+body:is(.inner--sage,.inner--mauve,.inner--slate) .inner-title h1{color:var(--area)}
+
+/* 2026-11-14ab (t549u): brain icon always maroon-left (web NORMAL cream logo) everywhere. On maroon headers and slim
+   bars it sits on a small pale #fdfcfe circular badge with a thin pale ring so the maroon facets don't merge into the bar.
+   Swap files kept in images/ but unreferenced. */
+.band .logo-mark{background:#fdfcfe;border-radius:50% !important;box-shadow:0 0 0 3px #fdfcfe,0 2px 8px -2px rgba(40,6,8,.45) !important}
+.band .logo-mark img{filter:none !important;border-radius:50%}
+.band .logo-mark--home{box-shadow:0 0 0 5px #fdfcfe,0 3px 12px -3px rgba(40,6,8,.5) !important}
+
+/* 2026-11-14al (t566u): no pale circular badge behind the brain logo on maroon headers / slim bars. The logo file is now
+   images/MindingData_logo_web_normal_cream_outlined.svg: the unchanged web NORMAL cream logo with a two-tone outline that
+   follows the brain silhouette (inner cream #fdfcfe band, outer dark plum #2a0f14 band). Original logo files untouched. */
+.band .logo-mark,.band .logo-mark--home{background:none !important;border-radius:0 !important;box-shadow:none !important}
+.band .logo-mark img{border-radius:0 !important;filter:drop-shadow(0 2px 4px rgba(30,4,8,.35)) !important}
+
+/* 2026-11-14am (t567u): header/slim-bar logo now images/MindingData_logo_web_normal_cream_outlined_split.svg: one 7-unit outline
+   split at the logo's own colour boundary - cream #fdfcfe beside the dark facets (left), maroon #640304 beside the cream half
+   (right). The previous stacked cream+plum file (_outlined.svg) is kept, unreferenced. The soft drop shadow from 14al is kept
+   (it lifts the maroon right-hand outline off the #7a2e30 header). */
+
+/* 2026-11-14an (t572u): header/slim-bar logo now images/MindingData_logo_web_normal_cream_an_V2_no_outline.svg - no thick outline;
+   right (cream) half keeps the original artwork edge (#640304 line + thin pale rim); left (maroon) half mirrors it: cream #fdfcfe
+   line (1.95 u) then a medium #640304 band (3 u). Split at the logo's own colour boundary. Soft drop shadow from 14al kept.
+   Previous _outlined.svg and _outlined_split.svg kept in images/, unreferenced. Footer logo unchanged (original file). */
+
+/* 2026-11-14ar (t580u): institution colour coding - Wellesley = blue, Dartmouth = green (sage, unchanged), FemtoSci = purple
+   (slate, unchanged). The middle column (DataViz & Applied Psych, ISWYM Lab / Wellesley: DataViz, Childhood Adversity,
+   Education) moves from mustard #c99a35 to blue #2f6fd6. Same-colour rule: every component that used the mustard family
+   changes with it - homepage column header text/rule, lab-link underline, tile outlines and label underlines, homepage data
+   dots and inner-page header dots (read from --mauve/-dot/-alt), crumbs, titles, icon rings, left bars, pager, mail link,
+   second-level pinstripe. Class names (.col--mauve, .inner--mauve) kept. */
+:root{--mauve:#2f6fd6;--mauve-dot:#6f9ae4;--mauve-alt:#2459b0}
+.areas3 .col--mauve{--cc:#2f6fd6;--hc:#2459b0}
+.inner--mauve{--cc:#2f6fd6;--cc-ink:#2459b0}
+.band--pin-mauve{border-bottom-color:#2f6fd6}
+.inner--mauve,.area--mauve{--area:#2459b0}
+
+/* --- 2026-11-14at: Wellesley (blue) column tile labels in blue (t580u follow-up - missed in round ar).
+   DataViz, Childhood Adversity, Education on index.html and index-offset.html.
+   Text #2459b0 (same as the column header ink; ~6.5:1 on the cream page), hover/focus #1d4891.
+   Sage and slate column labels are still maroon #6a1416 - left as is pending Sarah. --- */
+.areas3 .col--mauve .tile-label{color:#2459b0}
+.areas3 .col--mauve .tile:hover .tile-label,.areas3 .col--mauve .tile:focus-visible .tile-label{color:#1d4891}
+
+/* --- 2026-11-14au (t585u): tile labels back to maroon; institution names take the column colour.
+   1) Reverts the 14at blue labels: every homepage tile label is maroon #6a1416 again (hover #873939),
+      index.html and index-offset.html. The 14at rules above are overridden here, not deleted.
+   2) Affiliation line under each column header (lab + institution, .col-org) in the column header ink:
+      Dartmouth/green #4a7562, Wellesley/blue #2459b0, FemtoSci/purple #7e4bb0. Role text stays muted.
+   3) areas/in-group.html (stub that points to Childhood Adversity) was body inner--sage; now inner--mauve
+      so its header dots are blue like the other Wellesley-column pages. --- */
+.areas3 .col--mauve .tile-label{color:#6a1416}
+.areas3 .col--mauve .tile:hover .tile-label,.areas3 .col--mauve .tile:focus-visible .tile-label{color:#873939}
+.areas3 .col--sage .col-affil .col-org,.areas3 .col--sage .col-affil a.col-org:hover{color:#4a7562}
+.areas3 .col--mauve .col-affil .col-org,.areas3 .col--mauve .col-affil a.col-org:hover{color:#2459b0}
+.areas3 .col--slate .col-affil .col-org,.areas3 .col--slate .col-affil a.col-org:hover{color:#7e4bb0}
+
+/* --- 2026-11-14ay (t590u): re-applies the 14av rule (reverted at t588u, approved at t590u:
+   "maroon area name and blue org name"). All three columns.
+   Homepage (index.html, index-offset.html): column header names + their header rules -> maroon #6a1416.
+   Org/affiliation lines stay in the column colours (#4a7562 / #2459b0 / #7e4bb0, from 14au).
+   Area pages (sage/mauve/slate): h1 title -> maroon #6a1416.
+   Unchanged, still column colour: tile outlines, header dots, slim-bar pinstripes, breadcrumbs,
+   lab-name line and in-text links on area pages. --- */
+.areas3 .col-h,.areas3 .col--sage .col-h,.areas3 .col--mauve .col-h,.areas3 .col--slate .col-h{color:#6a1416;border-bottom-color:#6a1416}
+body:is(.inner--sage,.inner--mauve,.inner--slate) .inner-title h1{color:#6a1416}
+
+/* 2026-11-15 round bo (t617u): slim-bar template = Sarah's pick A4+J4 from round bm.
+   Burgundy bar, 4px #fdfcfe strip (inset shadow), 4px area pinstripe (border-bottom, set by .band--pin-*),
+   then a 4px brighter jewel stripe directly below with no gap (outer shadow). Keyed on the pinstripe class.
+   Jewels: green/sage #1a9e64, purple/slate #9b4fe0, blue/mauve #4a90ff (no blue slim page exists yet).
+   .band--pin-none (Professional Profiles) gets the white strip only, no jewel, pending Sarah's call. */
+.band--slim{--slim-jewel:transparent;z-index:2;box-shadow:inset 0 -4px 0 #fdfcfe}
+.band--slim.band--pin-sage{--slim-jewel:#1a9e64}
+.band--slim.band--pin-slate{--slim-jewel:#9b4fe0}
+.band--slim.band--pin-mauve{--slim-jewel:#4a90ff}
+.band--slim.band--pin-sage,.band--slim.band--pin-slate,.band--slim.band--pin-mauve{box-shadow:inset 0 -4px 0 #fdfcfe,0 4px 0 var(--slim-jewel)}
+
+/* 2026-11-16 round bs (t622u): header and slim-bar logo is now images/MindingData_logo_D2.svg (round bq D2:
+   continuous white line, 0.8-unit maroon outer hairline, no thick outer band or cream rim). 17 HTML refs changed.
+   Footer logo (MindingData_logo_web_normal_cream.svg) unchanged. Old logo files kept for a later cleanup. */
+
+/* 2026-11-16 round bw (t672u): "Coming soon" for pages/sections without content yet, in the area color (--cc-ink).
+   .coming-soon = small pill like the in-progress label; .coming-soon-block = the large Creative page message.
+   .profile-off = a profile tile shown as plain text (ResearchGate until her profile is updated; URL kept in an HTML comment). */
+.coming-soon{display:inline-block;vertical-align:.1em;font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;line-height:1.5;color:var(--cc-ink,#6a1416);border:1.5px solid var(--cc,#6a1416);border-radius:999px;padding:.05rem .65rem;white-space:nowrap}
+.coming-soon-block{text-align:center;padding:5rem 1.5rem 5.5rem}
+.coming-soon-big{margin:0;font-family:var(--serif);font-weight:600;font-size:clamp(2.6rem,7vw,4.6rem);line-height:1.05;letter-spacing:-.01em;color:#6a1416}
+.coming-soon-sub{margin:1rem 0 0;color:var(--muted);font-size:1.05rem}
+.profiles .profile-off{display:flex;flex-direction:column;gap:.1rem;min-height:44px;padding:1rem 1.15rem;border-radius:var(--radius-md);background:var(--sand-100);box-shadow:inset 0 0 0 1px var(--line);color:var(--muted);cursor:default}
+.profiles .profile-off .pname{color:var(--muted);text-decoration:none}
+.profiles .profile-off .phandle{font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#6a1416}

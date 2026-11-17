@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" role="img" aria-label="Minding Data">
+  <!-- Minding Data mark (2026-11-13): 3x3 data-dot grid on violet, echoing the FemtoSci tile and the banner dots -->
+  <rect width="64" height="64" rx="15" fill="#4f248f"/>
+  <g>
+    <circle cx="18" cy="18" r="5.2" fill="#c9b3ec" fill-opacity=".55"/>
+    <circle cx="32" cy="18" r="5.2" fill="#c9b3ec" fill-opacity=".55"/>
+    <circle cx="46" cy="18" r="5.2" fill="#ffffff"/>
+    <circle cx="18" cy="32" r="5.2" fill="#c9b3ec" fill-opacity=".55"/>
+    <circle cx="32" cy="32" r="5.2" fill="#ffffff"/>
+    <circle cx="46" cy="32" r="5.2" fill="#c9b3ec" fill-opacity=".55"/>
+    <circle cx="18" cy="46" r="5.2" fill="#ffffff"/>
+    <circle cx="32" cy="46" r="5.2" fill="#c9b3ec" fill-opacity=".55"/>
+    <circle cx="46" cy="46" r="5.2" fill="#c9b3ec" fill-opacity=".55"/>
+  </g>
+</svg>
