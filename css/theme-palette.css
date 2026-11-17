@@ -897,3 +897,15 @@ body.inner--slim .sulci-layer,body.inner--slim .bgv-layer{display:none !importan
 /* softer white for cards/text panels */
 :root{--card:#fcfaf6}
 .pub,.pubcard,.explore-list a,.textlinks a,.poster-full img{background:#fcfaf6}
+
+/* 2026-11-17 (t731u): 2nd-tier header - logo at the horizontal centre of the red band (band is full width; the dot
+   fringe is only below it), vertically centred in the solid red (--solid). CV + Professional Profiles stay ~20px from the right. */
+:root{--gut:calc((100vw - min(1080px, 100vw - 3rem)) / 2)}
+@media (max-width:380px){:root{--gut:calc((100vw - min(1080px, 100vw - 2rem)) / 2)}}
+.band--inner .topbar .topnav{position:absolute !important;top:0 !important;left:calc(-1 * var(--gut));right:calc(-1 * var(--gut));height:var(--solid);
+  transform:none;margin:0 !important;padding:0 20px 0 0;box-sizing:border-box;display:flex;align-items:center;justify-content:flex-end}
+.band--inner .topbar .topnav .logo-mark{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);margin:0}
+.band--inner .topbar .topnav .logo-mark:hover{transform:translate(-50%,calc(-50% - 1px))}
+@media (max-width:380px){.band--inner .topbar .topnav{padding-right:14px}}
+/* mobile: tighten CV / Profiles so they clear the centred logo */
+@media (max-width:640px){.band--inner .topbar .topnav{gap:.55rem}.band--inner .topbar .topnav a:not(.logo-mark){padding:.35rem .2rem}}
