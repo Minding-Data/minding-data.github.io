@@ -931,3 +931,9 @@ a.link-pill:focus-visible{outline:2.5px solid var(--cc,#8c3d3e);outline-offset:2
 .pub-links{margin:.45rem 0 0;display:flex;flex-wrap:wrap;gap:.4rem}
 .pub--thumb .pub-links{grid-column:1}
 .pub--thumb:has(.pub-links) .pub-thumb{grid-row:1 / span 3}
+
+/* SP-32: upcoming / in-preparation work uses the Memory page's "project" box
+   (same buff background, radius, padding and 4px left rule as .inner a.feature),
+   with the left rule in the page's own area colour via --cc. */
+.pub.pub--upcoming{background:#efeae1;box-shadow:inset 0 0 0 1px #e6dfd3;border-left:4px solid var(--cc,#8c3d3e);border-radius:var(--radius-md,16px);padding:1.3rem 1.4rem}
+.pub--upcoming .pub-kind{color:var(--cc-ink,var(--violet-ink))}
