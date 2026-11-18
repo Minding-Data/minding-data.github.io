@@ -966,3 +966,9 @@ a.about-link:hover,a.about-link:focus-visible{text-decoration:underline;text-dec
 .about-term{font-family:var(--serif);font-size:1.3rem;font-weight:600;color:var(--cc-ink)}
 .about-desc{font-size:1.05rem;line-height:1.55;color:var(--ink,#33262a)}
 @media (max-width:760px){.about-mark-grid{grid-template-columns:1fr}.about-logo img{max-width:340px}}
+
+/* SP-35: poster pages carry the abstract above the poster image */
+.poster-abstract{margin:0 0 1.4rem}
+.poster-abstract h2{margin:1rem 0 .5rem;font-family:var(--serif);font-size:1.25rem;color:var(--cc-ink)}
+.poster-abstract p{margin:0 0 .6rem;line-height:1.6}
+.poster-abstract .poster-abstract-src{font-size:.85rem;color:var(--muted)}
