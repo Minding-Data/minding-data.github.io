@@ -941,3 +941,28 @@ a.link-pill:focus-visible{outline:2.5px solid var(--cc,#8c3d3e);outline-offset:2
 /* SP-33: tier-3 / CV slim header carries the same CV + Professional Profiles links as other headers */
 .band--slim .slimbar .topnav{display:flex;flex-wrap:nowrap;flex-shrink:0;align-items:center;gap:.9rem}
 @media (max-width:640px){.band--slim .slimbar .topnav{gap:1rem}}
+
+/* 2026-11-17 (about page, t678u): About page + quiet footer link "About".
+   Inner and project pages get a minimal footer (one small link); the homepage link sits in the colophon. */
+.site-foot--mini{border-top:1px solid var(--lilac);margin-top:3rem;background:transparent}
+.foot-mini{padding:1rem 0 1.4rem;text-align:center;font-size:.82rem}
+.foot-mini a,.colophon .foot-about-link{color:var(--muted);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+.foot-mini a:hover,.colophon .foot-about-link:hover{color:#6a1416}
+.foot-sep{margin:0 .4rem;color:var(--muted)}
+
+/* SP-34: About page + wordmark click-through */
+a.about-link{color:inherit;text-decoration:none}
+a.about-link:hover,a.about-link:focus-visible{text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:.18em}
+.about-page .about-hero{padding:clamp(1.8rem,5vw,3.2rem) clamp(1.4rem,5vw,3.6rem)}
+.about-blurb{margin:0;font-family:var(--serif);font-size:clamp(1.3rem,2.4vw,1.85rem);line-height:1.5;color:var(--ink,#33262a);text-wrap:pretty}
+.about-blurb .foot-wordmark{font-size:1.18em}
+.about-mark-h{margin:0 0 1.2rem;font-family:var(--serif);font-size:clamp(1.4rem,2.4vw,1.8rem);color:var(--cc-ink)}
+.about-mark-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(1.5rem,4vw,3rem);align-items:center}
+.about-logo{margin:0}
+.about-logo img{display:block;width:100%;max-width:540px;height:auto;margin:0 auto}
+.about-legend{list-style:none;margin:0;padding:0;display:grid;gap:1.3rem;counter-reset:leg}
+.about-legend li{counter-increment:leg;display:grid;grid-template-columns:2.2rem 1fr;column-gap:.9rem;row-gap:.2rem;border-left:4px solid var(--cc);padding:.2rem 0 .2rem .9rem}
+.about-legend li::before{content:counter(leg);grid-row:1 / span 2;width:2.2rem;height:2.2rem;border-radius:50%;background:var(--cc);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center}
+.about-term{font-family:var(--serif);font-size:1.3rem;font-weight:600;color:var(--cc-ink)}
+.about-desc{font-size:1.05rem;line-height:1.55;color:var(--ink,#33262a)}
+@media (max-width:760px){.about-mark-grid{grid-template-columns:1fr}.about-logo img{max-width:340px}}
