@@ -979,5 +979,14 @@ a.about-link:hover,a.about-link:focus-visible{text-decoration:underline;text-dec
 
 /* 2026-11-18 SP-36 (pt905u, amended 9:19 AM): area colour coding applies to page header text only (already set by
    earlier rounds); listing links stay burgundy. The interim link-colour rules were removed. */
-/* SP-36: ETS paragraph on DataViz matched to the lead paragraph above it (was 16.5px vs 17.92px) */
-.area-blurb #ets{font-size:1.12rem;line-height:1.6}
+
+/* 2026-11-18 SP-37 (pt909u): (1) all intro-section text on area pages one size - every paragraph in the intro card matches
+   the lead paragraph (1.12rem / 1.6), replacing the DataViz-only #ets rule; (2) intro links that point to another area page
+   are coloured by the TARGET area (blue DataViz & Applied Psych, green Neuroscience, purple Chemical & Biological - the
+   homepage column inks). Intro links to outside sites keep the page's area colour; listing links stay burgundy; page titles
+   stay burgundy. */
+:root{--lk-dv:var(--mauve-alt);--lk-dv-line:var(--mauve);--lk-neuro:#4a7562;--lk-neuro-line:var(--sage);--lk-bio:var(--slate);--lk-bio-line:var(--slate)}
+.area-blurb p{font-size:1.12rem;line-height:1.6}
+.inner .page-main .area-blurb a.lk--dv{color:var(--lk-dv);text-decoration-color:var(--lk-dv-line)}
+.inner .page-main .area-blurb a.lk--neuro{color:var(--lk-neuro);text-decoration-color:var(--lk-neuro-line)}
+.inner .page-main .area-blurb a.lk--bio{color:var(--lk-bio);text-decoration-color:var(--lk-bio-line)}
