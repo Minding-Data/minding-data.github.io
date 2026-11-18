@@ -921,3 +921,13 @@ body.inner.inner--slim .bgv-layer{opacity:.32 !important}
 /* 2026-11-17 (t803u): cross-area link to the blue (Wellesley) Adversity page shows in blue on other area pages */
 .inner .page-main .prose a.xlink--mauve{color:#2459b0;text-decoration-color:#2f6fd6}
 .inner .page-main .prose a.xlink--mauve:hover{color:#1d4891}
+
+/* SP-31: small 'link' pill (badge look, clickable) */
+a.link-pill{text-decoration:none;cursor:pointer;transition:background var(--t) var(--ease),color var(--t) var(--ease)}
+a.link-pill::before{content:"\2197";font-size:.9em;letter-spacing:0}
+a.link-pill:hover,a.link-pill:focus-visible{background:#ead6d6;color:#5a1517;text-decoration:none}
+a.link-pill:focus-visible{outline:2.5px solid var(--cc,#8c3d3e);outline-offset:2px}
+.poster-links .link-pill{align-self:center}
+.pub-links{margin:.45rem 0 0;display:flex;flex-wrap:wrap;gap:.4rem}
+.pub--thumb .pub-links{grid-column:1}
+.pub--thumb:has(.pub-links) .pub-thumb{grid-row:1 / span 3}
