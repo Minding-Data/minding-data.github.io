@@ -977,16 +977,7 @@ a.about-link:hover,a.about-link:focus-visible{text-decoration:underline;text-dec
 .inner-title.lab-uniform .page-lab,.inner-title.lab-uniform .page-lab-name,.inner-title.lab-uniform .page-lab-meta,.inner-title.lab-uniform .page-lab-mailline,.inner-title.lab-uniform .page-lab-mail{font-size:.95rem;font-weight:600;color:var(--cc-ink);line-height:1.4}
 .inner-title.lab-uniform .page-lab-meta::before{color:var(--cc-ink)}
 
-/* 2026-11-18 SP-36 (pt905u): area link colours wherever a link appears - DataViz & Applied Psych column = blue,
-   Neuroscience column = green, Chemical & Biological column = purple (same inks as the homepage column headers).
-   Page default via body .lk-page--{dv,neuro,bio} on area, poster and project pages; per-link .lk--{dv,neuro,bio} when a
-   link points to another area. Header, crumbs, footer and homepage tiles keep their own styling. Buttons excluded. */
-:root{--lk-neuro:#4a7562;--lk-neuro-line:#6f9c86;--lk-dv:#2459b0;--lk-dv-line:#2f6fd6;--lk-bio:#7e4bb0;--lk-bio-line:#7e4bb0}
-.lk-page--neuro .page-main a:not(.btn):not(.tile){color:var(--lk-neuro);text-decoration-color:var(--lk-neuro-line)}
-.lk-page--dv .page-main a:not(.btn):not(.tile){color:var(--lk-dv);text-decoration-color:var(--lk-dv-line)}
-.lk-page--bio .page-main a:not(.btn):not(.tile){color:var(--lk-bio);text-decoration-color:var(--lk-bio-line)}
-a.lk--neuro,body[class] .page-main a.lk--neuro:not(.btn):not(.tile){color:var(--lk-neuro);text-decoration-color:var(--lk-neuro-line)}
-a.lk--dv,body[class] .page-main a.lk--dv:not(.btn):not(.tile){color:var(--lk-dv);text-decoration-color:var(--lk-dv-line)}
-a.lk--bio,body[class] .page-main a.lk--bio:not(.btn):not(.tile){color:var(--lk-bio);text-decoration-color:var(--lk-bio-line)}
+/* 2026-11-18 SP-36 (pt905u, amended 9:19 AM): area colour coding applies to page header text only (already set by
+   earlier rounds); listing links stay burgundy. The interim link-colour rules were removed. */
 /* SP-36: ETS paragraph on DataViz matched to the lead paragraph above it (was 16.5px vs 17.92px) */
 .area-blurb #ets{font-size:1.12rem;line-height:1.6}
