@@ -937,3 +937,7 @@ a.link-pill:focus-visible{outline:2.5px solid var(--cc,#8c3d3e);outline-offset:2
    with the left rule in the page's own area colour via --cc. */
 .pub.pub--upcoming{background:#efeae1;box-shadow:inset 0 0 0 1px #e6dfd3;border-left:4px solid var(--cc,#8c3d3e);border-radius:var(--radius-md,16px);padding:1.3rem 1.4rem}
 .pub--upcoming .pub-kind{color:var(--cc-ink,var(--violet-ink))}
+
+/* SP-33: tier-3 / CV slim header carries the same CV + Professional Profiles links as other headers */
+.band--slim .slimbar .topnav{display:flex;flex-wrap:nowrap;flex-shrink:0;align-items:center;gap:.9rem}
+@media (max-width:640px){.band--slim .slimbar .topnav{gap:1rem}}
