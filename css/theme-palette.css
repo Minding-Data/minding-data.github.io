@@ -990,3 +990,12 @@ a.about-link:hover,a.about-link:focus-visible{text-decoration:underline;text-dec
 .inner .page-main .area-blurb a.lk--dv{color:var(--lk-dv);text-decoration-color:var(--lk-dv-line)}
 .inner .page-main .area-blurb a.lk--neuro{color:var(--lk-neuro);text-decoration-color:var(--lk-neuro-line)}
 .inner .page-main .area-blurb a.lk--bio{color:var(--lk-bio);text-decoration-color:var(--lk-bio-line)}
+
+/* 2026-11-18 SP-38 (pt915u): area page header block - only links carry the area colour. Lab name, institution/role,
+   separators and subtitle are plain body ink; every header line (links and text) is one size and weight. Replaces the
+   DataViz-only .lab-uniform styling (class removed from dataviz.html; its old rules are now unused). Titles stay burgundy. */
+body:is(.inner--sage,.inner--mauve,.inner--slate) .inner-title :is(.page-lab,.page-lab-name,.page-lab-meta,.sub,.page-lab-mailline,.page-lab-mail){font-size:.95rem;font-weight:600;line-height:1.4;color:var(--ink)}
+body:is(.inner--sage,.inner--mauve,.inner--slate) .inner-title .page-lab-meta::before{color:var(--ink)}
+body:is(.inner--sage,.inner--mauve,.inner--slate) .inner-title :is(a.page-lab-name,a.page-lab-mail){color:var(--cc-ink);text-decoration-color:var(--cc)}
+/* SP-38: breadcrumbs follow the same rule - the current-page crumb and the › separators are plain ink; crumb links keep their colours */
+body:is(.inner--sage,.inner--mauve,.inner--slate) .inner-crumbs ol,body:is(.inner--sage,.inner--mauve,.inner--slate) .inner-crumbs [aria-current]{color:var(--ink)}
