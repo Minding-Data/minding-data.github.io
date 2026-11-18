@@ -917,3 +917,7 @@ body.inner--slim .bgv-layer{display:block !important}
    tier 2 (area pages, profiles, other info) .55; tier 3 (slim-bar projects and posters) .32 */
 body.inner .bgv-layer{opacity:.55 !important}
 body.inner.inner--slim .bgv-layer{opacity:.32 !important}
+
+/* 2026-11-17 (t803u): cross-area link to the blue (Wellesley) Adversity page shows in blue on other area pages */
+.inner .page-main .prose a.xlink--mauve{color:#2459b0;text-decoration-color:#2f6fd6}
+.inner .page-main .prose a.xlink--mauve:hover{color:#1d4891}
