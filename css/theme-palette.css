@@ -999,3 +999,8 @@ body:is(.inner--sage,.inner--mauve,.inner--slate) .inner-title .page-lab-meta::b
 body:is(.inner--sage,.inner--mauve,.inner--slate) .inner-title :is(a.page-lab-name,a.page-lab-mail){color:var(--cc-ink);text-decoration-color:var(--cc)}
 /* SP-38: breadcrumbs follow the same rule - the current-page crumb and the › separators are plain ink; crumb links keep their colours */
 body:is(.inner--sage,.inner--mauve,.inner--slate) .inner-crumbs ol,body:is(.inner--sage,.inner--mauve,.inner--slate) .inner-crumbs [aria-current]{color:var(--ink)}
+
+/* SP-39: a listing with two poster versions stacks both thumbnails in the thumbnail column; poster-page version note */
+.pub-thumbs{grid-column:2;grid-row:1 / span 2;align-self:center;display:flex;flex-direction:column;gap:.5rem}
+.pub-thumbs .pub-thumb{grid-column:auto;grid-row:auto}
+.poster-page .poster-note{max-width:68ch;margin:.2rem 0 .8rem}
